@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>My Schedule</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="getting-started" >
+
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-left>
+        <img src="img/mcfly.jpg">
+      </ion-avatar>
+      <h2>{{driverInfo.DriverName}}</h2>
+      <p>{{driverInfo.DriverId}}</p>
+    </ion-item>
+  </ion-card>
+
+  <ion-list>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-50>Clock In Time:</ion-col>
+          <ion-col width-50>{{driverInfo.Schedule.ClockInTime}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-50>Depot Depart Time:</ion-col>
+          <ion-col width-50>{{driverInfo.Schedule.DepotDepartTime}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-50>Depot Return Time:</ion-col>
+          <ion-col width-50>{{driverInfo.Schedule.DepotReturnTime}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-50>Clock Out Time:</ion-col>
+          <ion-col width-50>{{driverInfo.Schedule.ClockOutTime}}</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-grid>
+    <ion-row [hidden]="driverInfo.Schedule.IsConfirmed">
+      <button secondary full (click)="confirmSchedule()">
+        Looks Good, Lets Roll!
+      </button>
+    </ion-row>
+
+    <ion-row [hidden]="!driverInfo.Schedule.IsConfirmed">
+      <ion-col>
+        <h3>Schedule has been confirmed.</h3>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

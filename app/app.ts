@@ -1,8 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
-import {ListPage} from './pages/list/list';
+import {DriverSchedulePage} from "./pages/driver-schedule/driver-schedule";
 
 
 @Component({
@@ -12,8 +11,9 @@ class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage: any = HelloIonicPage;
+  rootPage: any = DriverSchedulePage;
   pages: Array<{title: string, component: any}>;
+  loginInfo: any;
 
   constructor(
     public platform: Platform,
@@ -21,10 +21,14 @@ class MyApp {
   ) {
     this.initializeApp();
 
+    this.loginInfo = {
+      isLoggedIn: false,
+      username: ""
+    };
+
     // set our app's pages
     this.pages = [
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage }
+      { title: 'My Schedule', component: DriverSchedulePage}
     ];
   }
 
